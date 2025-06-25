@@ -1,19 +1,28 @@
 /* Global layout */
 body {
-  background: #121212;
+  background: linear-gradient(-45deg, #1e1e1e, #121212, #1e1e1e);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
   color: #f2f2f2;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 2rem;
   line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
   min-height: 100vh;
   overflow-y: auto;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Light Theme */
 body.light-theme {
   background: #f5f5f5;
   color: #222;
+  animation: none;
 }
 
 /* Input, textarea, button formatting */
@@ -26,10 +35,17 @@ button {
   background: #1c1c1c;
   color: #fff;
   border: 1px solid #444;
-  border-radius: 6px;
+  border-radius: 8px;
   box-sizing: border-box;
   font-size: 1rem;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #00ffc3;
+  outline: none;
+  box-shadow: 0 0 6px rgba(0, 255, 195, 0.3);
 }
 
 body.light-theme input,
@@ -47,14 +63,15 @@ button {
   font-weight: 700;
   cursor: pointer;
   border: none;
-  border-radius: 6px;
-  transition: opacity 0.2s ease, background-color 0.3s ease;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
   margin-bottom: 1rem;
 }
 
 button:hover,
 button:focus {
-  opacity: 0.9;
+  transform: scale(1.03);
+  opacity: 0.95;
   outline: none;
 }
 
@@ -86,9 +103,10 @@ textarea {
   margin: 2rem 0;
   background: #222;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 12px;
   gap: 1rem;
   transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 body.light-theme #mainNav {
@@ -98,7 +116,7 @@ body.light-theme #mainNav {
 #mainNav button {
   flex: 1 1 120px;
   margin: 0.5rem;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 600;
   box-shadow: 0 2px 5px rgb(0 0 0 / 0.15);
   user-select: none;
@@ -115,12 +133,13 @@ body.light-theme #mainNav {
   padding: 1.25rem 1.5rem;
   margin-bottom: 2rem;
   background: #181818;
-  border-radius: 8px;
-  transition: background 0.2s ease, border-color 0.3s ease;
+  border-radius: 12px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .post:hover {
   background: #202020;
+  transform: translateY(-4px);
 }
 
 body.light-theme .post {
@@ -161,7 +180,7 @@ body.light-theme .comments {
   font-size: 1rem;
   background: #1a1a1a;
   border: 1px solid #333;
-  border-radius: 5px;
+  border-radius: 8px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -174,16 +193,21 @@ body.light-theme .status-bar {
 /* Video posts */
 .video-post {
   margin-bottom: 1.5rem;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgb(0 0 0 / 0.3);
+  transition: transform 0.3s ease;
+}
+
+.video-post:hover {
+  transform: scale(1.02);
 }
 
 .video-post iframe {
   width: 100%;
   height: 300px;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 /* Responsive adjustments */
